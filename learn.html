@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PolySEA | Learn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <a id="backLink" href="index.html" class="secondary action-link">Back Home</a>
+
+      <section class="card language-card" style="margin-top: 10px">
+        <label for="languageSelect" class="label">CHOOSE LANGUAGE</label>
+        <div class="language-row">
+          <select id="languageSelect" aria-label="Choose target language">
+            <option value="thai">Thai</option>
+            <option value="vietnamese">Vietnamese</option>
+            <option value="indonesian">Bahasa Indonesia</option>
+            <option value="filipino">Filipino</option>
+          </select>
+          <p id="currentLanguage" class="language-note">Learning: Thai</p>
+        </div>
+      </section>
+
+      <section class="card focus-card">
+        <p class="label">TODAY'S FOCUS</p>
+        <h2 id="phraseText">"How are you today?"</h2>
+        <p id="phraseTranslation" class="translation">Thai: "สบายดีไหม?"</p>
+        <div class="action-row">
+          <button id="listenBtn" class="secondary">Listen</button>
+          <button id="nextBtn" class="primary">Next Phrase</button>
+        </div>
+      </section>
+
+      <section class="section">
+        <h3>7-Day Learning Path</h3>
+        <div id="dayTabs" class="day-tabs"></div>
+        <article class="card day-card">
+          <p id="dayLabel" class="label">DAY 1</p>
+          <h2 id="dayTitle">Start with greetings</h2>
+          <p id="dayGoal" class="translation">Goal text</p>
+          <ul id="daySteps" class="day-steps"></ul>
+          <div class="action-row">
+            <button id="prevDayBtn" class="secondary">Previous</button>
+            <button id="dayListenBtn" class="secondary">Listen Key Phrase</button>
+            <button id="nextDayBtn" class="primary">Next Day</button>
+          </div>
+          <button id="completeDayBtn" class="primary full">Mark Day Complete</button>
+          <p id="dayStatus" class="language-note">0 of 7 days completed</p>
+        </article>
+      </section>
+    </main>
+
+    <script src="content.js"></script>
+    <script src="learn.js"></script>
+  </body>
+</html>

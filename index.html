@@ -3,126 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PolySEA | Learn Languages Across Southeast Asia</title>
+    <title>PolySEA AI | Chat</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="page-bg"></div>
-    <main class="app-shell" aria-label="PolySEA App Homepage">
-      <header class="hero">
-        <div class="brand-row">
+    <div class="layout-shell">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div class="sidebar-brand">
+            <span class="brand-badge">SEA</span>
+            <div>
+              <strong>PolySEA</strong>
+              <p>Language Studio</p>
+            </div>
+          </div>
+          <p class="sidebar-note">Practice Thai, Vietnamese, Indonesian, and Filipino with an earthy, calm chat flow.</p>
+        </div>
+        <div class="sidebar-foot">AI Tutor</div>
+      </aside>
+
+      <main class="app-shell">
+        <header class="chat-header">
           <div class="logo-mark" aria-hidden="true">SEA</div>
           <div>
-            <h1>PolySEA</h1>
-            <p>Learn languages across Southeast Asia</p>
+            <h1>PolySEA AI</h1>
+            <p>Your Southeast Asian Language Companion</p>
           </div>
+        </header>
+
+        <div id="chatContainer" class="chat-container">
+          <div id="welcomeMessage" class="welcome-message">
+            <h2>Hello, Traveler.</h2>
+            <p>I can help you learn Thai, Vietnamese, Indonesian, or Filipino.</p>
+          </div>
+          <div id="messagesArea" class="messages-area"></div>
         </div>
 
-        <section class="language-picker card" aria-label="Language selection">
-          <div>
-            <h2>Choose your language</h2>
-            <p id="language-list">Thai | English | Vietnamese | Bahasa Indonesia</p>
+        <div class="input-container">
+          <div class="input-wrapper">
+            <input type="text" id="chatInput" placeholder="Ask me how to say 'Hello' in Thai..." autocomplete="off" />
+            <button id="sendBtn" aria-label="Send message">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+              </svg>
+            </button>
           </div>
-          <button id="languageBtn" class="chip-btn" aria-haspopup="listbox" aria-expanded="false">
-            Switch
-          </button>
-        </section>
-      </header>
-
-      <section class="section">
-        <h3>TODAY</h3>
-        <article class="card phrase-card">
-          <div class="card-title-row">
-            <h4>Phrase of the Day</h4>
-            <span class="context-badge" id="purposeBadge">Travel</span>
-          </div>
-          <p class="phrase" id="phraseText">"How much is this?"</p>
-          <p class="translation" id="phraseTranslation">Thai: "An-nee tao-rai?"</p>
-          <div class="actions-row">
-            <button id="listenBtn" class="secondary">Listen</button>
-            <button id="practiceBtn" class="primary">Practice</button>
-          </div>
-        </article>
-      </section>
-
-      <section class="section">
-        <h3>LEARN BY PURPOSE</h3>
-        <div class="purpose-grid" role="tablist" aria-label="Learning goals">
-          <button class="purpose-tile active" data-purpose="study" role="tab" aria-selected="true">Study</button>
-          <button class="purpose-tile" data-purpose="work" role="tab" aria-selected="false">Work</button>
-          <button class="purpose-tile" data-purpose="travel" role="tab" aria-selected="false">Travel</button>
-          <button class="purpose-tile" data-purpose="daily" role="tab" aria-selected="false">Daily</button>
         </div>
-        <article class="card lesson-card" aria-live="polite">
-          <h4 id="lessonTitle">Campus Essentials in Bangkok</h4>
-          <p id="lessonDescription">Fast Thai phrases for university life, class discussions, and student services.</p>
-          <div class="lesson-meta">
-            <span id="lessonLevel">Beginner</span>
-            <span id="lessonDuration">12 min</span>
-            <span id="lessonType">Video + Quiz</span>
-          </div>
-          <button class="primary full">Start Lesson</button>
-        </article>
-      </section>
+      </main>
+    </div>
 
-      <section class="section">
-        <h3>CONNECT US ↔ SEA</h3>
-        <article class="card connect-card">
-          <div class="connect-head">
-            <h4>Live with Teachers</h4>
-            <span class="live-dot">Live now</span>
-          </div>
-          <div class="person-row">
-            <div class="avatar" aria-hidden="true">M</div>
-            <div class="person-copy">
-              <p>Maria (PH)</p>
-              <span>Business English for Manila teams</span>
-            </div>
-            <button class="primary">Join Class</button>
-          </div>
-          <div class="person-row">
-            <div class="avatar" aria-hidden="true">N</div>
-            <div class="person-copy">
-              <p>Nguyen (VN)</p>
-              <span>Free chat: travel Vietnamese</span>
-            </div>
-            <button class="secondary">Talk Now</button>
-          </div>
-        </article>
-      </section>
-
-      <section class="section market-section">
-        <h3>US MARKET PATHWAYS</h3>
-        <div class="market-grid">
-          <article class="market-item">
-            <h4>Study Abroad Prep</h4>
-            <p>Language tracks for US students entering SEA universities.</p>
-          </article>
-          <article class="market-item">
-            <h4>Workforce Training</h4>
-            <p>Role-based language packs for customer support and operations.</p>
-          </article>
-          <article class="market-item">
-            <h4>Travel Companion</h4>
-            <p>Practical voice drills for airports, hotels, and local transport.</p>
-          </article>
-        </div>
-      </section>
-
-      <nav class="bottom-nav" aria-label="Primary navigation">
-        <a href="#" class="active">Home</a>
-        <a href="#">Learn</a>
-        <a href="#">Connect</a>
-        <a href="#">Profile</a>
-      </nav>
-    </main>
-
-    <script src="script.js"></script>
+    <script src="content.js"></script>
+    <script src="home.js"></script>
   </body>
 </html>

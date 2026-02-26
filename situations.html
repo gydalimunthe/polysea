@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PolySEA | Situations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <a id="backLink" href="index.html" class="secondary action-link">Back Home</a>
+
+      <section class="card language-card" style="margin-top: 10px">
+        <label for="languageSelect" class="label">CHOOSE LANGUAGE</label>
+        <div class="language-row">
+          <select id="languageSelect" aria-label="Choose target language">
+            <option value="thai">Thai</option>
+            <option value="vietnamese">Vietnamese</option>
+            <option value="indonesian">Bahasa Indonesia</option>
+            <option value="filipino">Filipino</option>
+          </select>
+          <p id="currentLanguage" class="language-note">Learning: Thai</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h3>Common Daily Situations</h3>
+        <div id="situationList" class="list"></div>
+      </section>
+    </main>
+
+    <script src="content.js"></script>
+    <script src="situations.js"></script>
+  </body>
+</html>
