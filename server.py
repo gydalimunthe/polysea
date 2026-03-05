@@ -132,6 +132,12 @@ def chat():
     except Exception as e:
         return jsonify({"response": f"Error connecting to AI: {str(e)}. Check GROQ_API_KEY and GROQ_MODEL."}), 502
 
+
+@app.route('/health', methods=['GET'])
+def health():
+    # Simple health check for load balancers and probes
+    return jsonify({"status": "ok", "service": "polysea"}), 200
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", "5050"))
     app.run(debug=True, host="127.0.0.1", port=port)
