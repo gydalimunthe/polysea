@@ -15,7 +15,15 @@ except ImportError:
 
 
 app = Flask(__name__)
-CORS(app)
+# Configure CORS origins from environment for production (comma-separated).
+# If ALLOWED_ORIGINS is not set, default to allowing all origins (development).
+allowed_origins = os.environ.get("ALLOWED_ORIGINS", "*")
+if allowed_origins.strip() == "*":
+    CORS(app)
+else:
+    # split comma-separated list and strip whitespace
+    origins = [o.strip() for o in allowed_origins.split(",") if o.strip()]
+    CORS(app, origins=origins)
 
 # Initialize Groq client
 # Make sure to set your API key: export GROQ_API_KEY='your_key'
