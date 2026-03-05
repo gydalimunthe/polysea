@@ -10,8 +10,8 @@ from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
 try:
     from groq import Groq
 except ImportError:
-    print("Error: The 'groq' library is not installed.\nPlease run: pip3 install groq")
-    sys.exit(1)
+    print("Warning: The 'groq' library is not installed. AI features will be disabled.")
+    Groq = None
 
 
 app = Flask(__name__)
@@ -20,12 +20,20 @@ CORS(app)
 # Initialize Groq client
 # Make sure to set your API key: export GROQ_API_KEY='your_key'
 api_key = os.environ.get("GROQ_API_KEY")
-if not api_key:
-    print("Error: GROQ_API_KEY is not set.")
-    print("Run: export GROQ_API_KEY='your_key'")
-    sys.exit(1)
-
-client = Groq(api_key=api_key)
+client = None
+if Groq is None:
+    # groq library missing; keep client None and handle at request time
+    client = None
+else:
+    if not api_key:
+        print("Warning: GROQ_API_KEY is not set. AI features will be disabled until it's configured.")
+        client = None
+    else:
+        try:
+            client = Groq(api_key=api_key)
+        except Exception as e:
+            print(f"Warning: Failed to initialize Groq client: {e}")
+            client = None
 MODEL_NAME = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
 APP_SECRET_KEY = os.environ.get("APP_SECRET_KEY", "polysea-dev-secret")
 token_serializer = URLSafeTimedSerializer(APP_SECRET_KEY)
@@ -104,6 +112,9 @@ def chat():
     messages = [system_prompt] + history + [{"role": "user", "content": user_message}]
 
     try:
+        if client is None:
+            return jsonify({"response": "AI backend not configured. Set GROQ_API_KEY and install groq library."}), 502
+
         chat_completion = client.chat.completions.create(
             messages=messages,
             model=MODEL_NAME,
