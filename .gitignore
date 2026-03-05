@@ -1,2 +1,13 @@
+# Ignore environment files and local DB
 .env
+polysea.db
+__pycache__/
+.venv/
+venv/
+*.pyc
+*.pyo
+*.pyd
+dist/
+build/
+*.egg-info/.env
 .env.*
