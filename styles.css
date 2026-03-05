@@ -18,18 +18,22 @@ body {
   background: radial-gradient(circle at 20% 0%, #f8f4ec 0%, #e7ddcc 100%);
   font-family: "Source Sans 3", sans-serif;
   color: var(--ink);
-  display: grid;
-  place-items: start center;
-  padding: 18px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 20px;
 }
 
 .app-shell {
-  width: min(560px, 100%);
-  background: var(--paper);
+  width: min(980px, 100%);
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), var(--paper));
   border: 1px solid var(--line);
-  border-radius: 26px;
+  border-radius: 18px;
   padding: 18px;
-  box-shadow: 0 12px 30px rgba(60, 39, 16, 0.12);
+  box-shadow: 0 20px 50px rgba(60, 39, 16, 0.12);
 }
 
 .hero {
@@ -286,4 +290,113 @@ button {
 .snippet-base {
   margin: 2px 0 0;
   color: var(--muted);
+}
+
+/* Sidebar & Chat layout additions */
+.sidebar {
+  background: linear-gradient(180deg, #fffdfa, #fbf6ee);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar .sidebar-brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 640px;
+  background: linear-gradient(180deg, rgba(250,245,235,0.6), rgba(255,255,255,0.4));
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  padding: 12px;
+}
+
+.messages-area {
+  flex: 1 1 auto;
+  overflow: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.message-row.user {
+  justify-content: flex-end;
+}
+
+.message-row .bubble {
+  max-width: 75%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  box-shadow: 0 6px 18px rgba(60,39,16,0.06);
+}
+
+.message-row.user .bubble {
+  background: linear-gradient(180deg, var(--gold), var(--gold-deep));
+  color: #fff;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.input-container {
+  margin-top: 12px;
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.input-wrapper input[type="text"] {
+  flex: 1 1 auto;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+
+.input-wrapper button {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(180deg, var(--gold), var(--gold-deep));
+  color: #fff;
+}
+
+.welcome-message h2 {
+  margin: 0 0 6px 0;
+}
+
+@media (max-width: 860px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .app-shell { width: min(680px, 100%); }
 }
