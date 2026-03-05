@@ -560,7 +560,10 @@ const logoutBtn = document.getElementById("logoutBtn");
 let chatHistory = [];
 let chatThreads = [];
 let activeThreadId = null;
-const API_BASE_URL = "http://127.0.0.1:5050";
+// Allow overriding the API base at runtime (set `window.API_BASE_URL` in the hosting
+// platform or default to the Render backend URL). This makes the frontend deployable
+// to Vercel or Netlify while the backend runs on Render.
+const API_BASE_URL = window.API_BASE_URL || "https://polysea.onrender.com";
 const CHAT_STORAGE_PREFIX = "polysea_chat_threads_v1";
 const CHAT_SETTINGS_KEY = "polysea_chat_settings_v1";
 const AUTH_TOKEN_KEY = "polysea_auth_token_v1";
